@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -27,10 +28,13 @@ public class MainActivity extends AppCompatActivity {
     ArrayList <CryptoModel> cryptoModels;
     private final  String BASE_URL = "https://raw.githubusercontent.com/";
     Retrofit retrofit;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        recyclerView = findViewById(R.id.recyclerView);
 
         // Retrofit & JSON
         Gson gson = new GsonBuilder().setLenient().create();
