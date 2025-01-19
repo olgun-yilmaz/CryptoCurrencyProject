@@ -1,6 +1,7 @@
 package com.olgunyilmaz.cryptocurrencyproject.adapter;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.olgunyilmaz.cryptocurrencyproject.R;
 import com.olgunyilmaz.cryptocurrencyproject.model.CryptoModel;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             itemView.setBackgroundColor(Color.parseColor(colors[position % colors.length]));
             textName = itemView.findViewById(R.id.textName);
             textPrice = itemView.findViewById(R.id.textPrice);
+
             textName.setText(cryptoModel.crypto);
             textPrice.setText(""+cryptoModel.price);
             System.out.println("end of  the bind");

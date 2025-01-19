@@ -7,7 +7,5 @@ public class CryptoModel {
     public String crypto;
     @SerializedName("rate")
     public double price;
-    @SerializedName("time")
-    public String time;
 
 }

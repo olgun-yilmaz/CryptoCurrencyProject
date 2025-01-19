@@ -12,11 +12,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface CryptoAPI {
-    //GET
-
-    //URL BASE :https://raw.githubusercontent.com/
-    // atilsamancioglu/K21-JSONDataSet/master/crypto.json -> key
-    //GET -> price?key=xxx
 
     @GET("v1/exchangerate/USD")
     Call<ExchangeRateResponse> getData(

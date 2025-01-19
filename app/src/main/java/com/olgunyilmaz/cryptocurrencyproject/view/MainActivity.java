@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -14,6 +16,10 @@ import com.olgunyilmaz.cryptocurrencyproject.model.CryptoModel;
 import com.olgunyilmaz.cryptocurrencyproject.model.ExchangeRateResponse;
 import com.olgunyilmaz.cryptocurrencyproject.service.CryptoAPI;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
@@ -33,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerViewAdapter recyclerViewAdapter;
 
     CompositeDisposable compositeDisposable;
+    TextView dateText;
 
 
     @Override
@@ -41,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recyclerView);
+
+        dateText = findViewById(R.id.dateText);
+
+        dateText.setText("Date : "+getCurrentDate());
 
         //Retrofit & JSON
 
@@ -92,5 +103,23 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
 
         compositeDisposable.clear();
+    }
+
+    private String getCurrentDate(){
+        ZonedDateTime now = null;
+        String formatteDate = "";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            now = ZonedDateTime.now(ZoneId.of("Europe/Istanbul"));
+        }
+
+        DateTimeFormatter formatter = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            formatteDate = now.format(formatter);
+        }
+        return formatteDate;
     }
 }
