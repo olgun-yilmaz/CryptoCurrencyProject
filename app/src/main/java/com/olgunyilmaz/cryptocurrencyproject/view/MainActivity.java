@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,16 +59,10 @@ public class MainActivity extends AppCompatActivity {
     private void loadData(){
 
         final CryptoAPI cryptoAPI = retrofit.create(CryptoAPI.class);
-        /*
 
-        String apiKey = BuildConfig.API_KEY;
-        System.out.println("API Key: " + apiKey);
+        String API_KEY = getString(R.string.api_key);
 
-        Log.d("API_KEY", BuildConfig.API_KEY);*/
-        
-
-
-        Call<ExchangeRateResponse> call = cryptoAPI.getData("apiKey","json");
+        Call<ExchangeRateResponse> call = cryptoAPI.getData(API_KEY,"json");
 
         call.enqueue(new Callback<ExchangeRateResponse>() {
             @Override
