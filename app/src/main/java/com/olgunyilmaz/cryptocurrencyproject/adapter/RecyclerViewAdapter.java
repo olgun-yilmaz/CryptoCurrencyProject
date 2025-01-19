@@ -56,8 +56,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             itemView.setBackgroundColor(Color.parseColor(colors[position % colors.length]));
             textName = itemView.findViewById(R.id.textName);
             textPrice = itemView.findViewById(R.id.textPrice);
-            textName.setText(cryptoModel.currency);
-            textPrice.setText(cryptoModel.price);
+            textName.setText(cryptoModel.crypto);
+            textPrice.setText(""+cryptoModel.price);
             System.out.println("end of  the bind");
 
         }
